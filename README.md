@@ -2,14 +2,26 @@
 
 To get started with AOSP sources to build TWRP, you'll need to get familiar with Git and Repo.
 
-#TO INITIALIZE YOUR LOCAL REPOSITORY USING THE AOSP TREES TO BUILD TWRP, USE A COMMAND LIKE THIS:
+## To initialize your local repository using the aosp trees to build twrp, use a command like this:
 
+```
 repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+```
 
-#THEN TO SYNC UP:
+## Then to sync up:
 
 repo sync
 
-#THEN TO BUILD:
+## Then to build:
 
-cd <source-dir>; . build/envsetup.sh; lunch twrp_willow-eng; mka recoveryimage
+```
+. build/envsetup.sh
+lunch omni_willow-eng
+mka recocoveryimage
+```
+
+To test it:
+
+```
+ out/target/product/willow/recovery.img
+```
