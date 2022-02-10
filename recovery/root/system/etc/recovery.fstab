@@ -1,105 +1,50 @@
+# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 # Android fstab file.
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-# mount point  fstype device                             device2               flags
-/boot          emmc    /dev/block/bootdevice/by-name/boot
-/dtbo          emmc    /dev/block/bootdevice/by-name/dtbo                      flags=backup=1;display="Dtbo";flashimg=1
-/cache         ext4    /dev/block/bootdevice/by-name/cache
-/recovery      emmc    /dev/block/bootdevice/by-name/recovery                  flags=display="Recovery";backup=1
-/system_root   ext4    /dev/block/bootdevice/by-name/system                    flags=display="System";backup=1;wipeingui
-/vendor        ext4    /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor";backup=1;wipeingui
-/system_image  emmc    /dev/block/bootdevice/by-name/system                    flags=display="System_image";flashimg=1;backup=0
-/vendor_image  emmc    /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor_image";flashimg=1;backup=0
-/data          f2fs    /dev/block/bootdevice/by-name/userdata                  flags=fileencryption=ice:aes-256-cts;wrappedkey
-/metadata      ext4    /dev/block/bootdevice/by-name/metadata                  flags=display="Metadata";backup=1
-/firmware      vfat    /dev/block/bootdevice/by-name/modem                     flags=display="Firmware";mounttodecrypt
-/cust          ext4    /dev/block/bootdevice/by-name/cust                      flags=display="Cust";backup=1;wipeingui
-/cust_image    emmc    /dev/block/bootdevice/by-name/cust                      flags=display="Cust image";flashimg=1
-/misc          emmc    /dev/block/bootdevice/by-name/misc                      flags=display="Misc";backup=1
-/modem         emmc    /dev/block/bootdevice/by-name/modem                     flags=backup=1;display="Modem"
-/bluetooth     emmc    /dev/block/bootdevice/by-name/bluetooth                 flags=backup=1;subpartitionof=/modem
-/dsp           emmc    /dev/block/bootdevice/by-name/dsp                       flags=backup=1;subpartitionof=/modem
-/efs1          emmc    /dev/block/bootdevice/by-name/modemst1                  flags=backup=1;display=EFS
-/efs2          emmc    /dev/block/bootdevice/by-name/modemst2                  flags=backup=1;subpartitionof=/efs1
-/efsc          emmc    /dev/block/bootdevice/by-name/fsc                       flags=backup=1;subpartitionof=/efs1
-/efsg          emmc    /dev/block/bootdevice/by-name/fsg                       flags=backup=1;subpartitionof=/efs1
-/persist       ext4    /dev/block/bootdevice/by-name/persist                   flags=display="Persist";backup=1;wipeingui
-/persist_image emmc    /dev/block/bootdevice/by-name/persist                   flags=display="Persist";flashimg=1
-#ext
-/cmnlib		    emmc	/dev/block/bootdevice/by-name/cmnlib                   flags=display="cmnlib";backup=1
-/hyp		    emmc	/dev/block/bootdevice/by-name/hyp                      flags=display="hyp";backup=1
-/tz		        emmc	/dev/block/bootdevice/by-name/tz                       flags=display="tz";backup=1
-/rpm		    emmc	/dev/block/bootdevice/by-name/rpm	                   flags=display="rpm";backup=1
-/keymaster	    emmc	/dev/block/bootdevice/by-name/keymaster	               flags=display="keymaster";backup=1
-/devcfg		    emmc	/dev/block/bootdevice/by-name/devcfg	               flags=display="devcfg";backup=1
-/dsp            ext4    /dev/block/bootdevice/by-name/dsp                      flags=display="dsp";backup=1
-/devinfo        emmc    /dev/block/bootdevice/by-name/devinfo                  flags=display="devinfo";backup=1
-/switch         emmc    /dev/block/bootdevice/by-name/switch                   flags=display="switch";backup=1
-/dpo            emmc    /dev/block/bootdevice/by-name/dpo                      flags=display="dpo";backup=1
-/fsc            emmc    /dev/block/bootdevice/by-name/fsc                      flags=display="fsc";backup=1
-/limits         emmc    /dev/block/bootdevice/by-name/limits                   flags=display="limits";backup=1
-/ssd            emmc    /dev/block/bootdevice/by-name/ssd                      flags=display="ssd";backup=1
-/sec            emmc    /dev/block/bootdevice/by-name/sec                      flags=display="sec";backup=1
-/vbmeta         emmc    /dev/block/bootdevice/by-name/vbmeta                   flags=display="vbmeta";;backup=1;flashimg=1
-/storsec        emmc    /dev/block/bootdevice/by-name/storsec                  flags=display="storsec";backup=1
-/apdp           emmc    /dev/block/bootdevice/by-name/apdp                     flags=display="apdp";backup=1
-/msadp          emmc    /dev/block/bootdevice/by-name/msadp                    flags=display="msadp";backup=1
-/frp            emmc    /dev/block/bootdevice/by-name/frp                      flags=display="frp";backup=1;flashimg=1
-/pmic           emmc    /dev/block/bootdevice/by-name/pmic                     flags=display="pmic";backup=1
-/cmnlib64       emmc    /dev/block/bootdevice/by-name/cmnlib64                 flags=display="cmnlib64";backup=1
-/dip            emmc    /dev/block/bootdevice/by-name/dip                      flags=display="dip";backup=1
-/ddr            emmc    /dev/block/bootdevice/by-name/ddr                      flags=display="ddr";backup=1
-/toolsfv        emmc    /dev/block/bootdevice/by-name/ktoolsfv                 flags=display="toolsfv";backup=1
-/mdtpsecapp     emmc    /dev/block/bootdevice/by-name/mdtpsecapp               flags=display="mdtpsecapp";backup=1
-/sti            emmc    /dev/block/bootdevice/by-name/sti                      flags=display="sti";backup=1
-/xbl            emmc    /dev/block/bootdevice/by-name/xbl                      flags=display="xbl";backup=1
-/logfs          emmc    /dev/block/bootdevice/by-name/logfs                    flags=display="logfs";backup=1
-/bk1            emmc    /dev/block/bootdevice/by-name/bk1                      flags=display="bk1";backup=1
-/mdtp           emmc    /dev/block/bootdevice/by-name/mdtp                     flags=display="mdtp";backup=1
-/bk2            emmc    /dev/block/bootdevice/by-name/bk2                      flags=display="bk2";backup=1
-/splash         emmc    /dev/block/bootdevice/by-name/splash                   flags=display="splash";backup=1
-/logdump        emmc    /dev/block/bootdevice/by-name/logdump                  flags=display="logdump";backup=1
-/rawdump        emmc    /dev/block/bootdevice/by-name/rawdump                  flags=display="rawdump";backup=1
-/secdata        emmc    /dev/block/bootdevice/by-name/secdata                  flags=backup=1
-/multiimgoem    emmc    /dev/block/bootdevice/by-name/multiimgoem              flags=backup=1
-/multiimgqti    emmc    /dev/block/bootdevice/by-name/multiimgqti              flags=backup=1
-/qupfw          emmc    /dev/block/bootdevice/by-name/qupfw                    flags=backup=1
-/qupfwbak       emmc    /dev/block/bootdevice/by-name/qupfwbak                 flags=backup=1
-/vbmetabak      emmc    /dev/block/bootdevice/by-name/vbmetabak                flags=backup=1
-/xbl_config     emmc    /dev/block/bootdevice/by-name/xbl_config               flags=backup=1
-/xbl_configbak  emmc    /dev/block/bootdevice/by-name/xbl_configbak            flags=backup=1
-/devcfgbak      emmc    /dev/block/bootdevice/by-name/devcfgbak                flags=backup=1
-/bk0            emmc    /dev/block/bootdevice/by-name/bk0                      flags=backup=1
-/rpmbak         emmc    /dev/block/bootdevice/by-name/rpmbak                   flags=backup=1
-/hypbak         emmc    /dev/block/bootdevice/by-name/hypbak                   flags=backup=1
-/keymasterbak   emmc    /dev/block/bootdevice/by-name/keymasterbak             flags=backup=1
-/cmnlibbak      emmc    /dev/block/bootdevice/by-name/cmnlibbak                flags=backup=1
-/cmnlib64bak    emmc    /dev/block/bootdevice/by-name/cmnlib64bak              flags=backup=1
-/keystore       emmc    /dev/block/bootdevice/by-name/keystore                 flags=backup=1
-/catefv         emmc    /dev/block/bootdevice/by-name/catefv                   flags=backup=1
-/uefivarstore   emmc    /dev/block/bootdevice/by-name/uefivarstore             flags=backup=1
-/abl            emmc    /dev/block/bootdevice/by-name/abl                      flags=backup=1
-/ablbak         emmc    /dev/block/bootdevice/by-name/ablbak                   flags=backup=1
-/bluetoothbak   emmc    /dev/block/bootdevice/by-name/bluetoothbak             flags=backup=1
-/catecontentfv  emmc    /dev/block/bootdevice/by-name/catecontentfv            flags=backup=1
-/uefisecapp     emmc    /dev/block/bootdevice/by-name/uefisecapp               flags=backup=1
-/uefisecappbak  emmc    /dev/block/bootdevice/by-name/uefisecappbak            flags=backup=1
-/cateloader     emmc    /dev/block/bootdevice/by-name/cateloader               flags=backup=1
-/xblbak         emmc    /dev/block/bootdevice/by-name/xblbak                   flags=backup=1
-/tzbak          emmc    /dev/block/bootdevice/by-name/tzbak                    flags=backup=1
-/mdtpsecappbak  emmc    /dev/block/bootdevice/by-name/mdtpsecappbak            flags=backup=1
-/spunvm         emmc    /dev/block/bootdevice/by-name/spunvm                   flags=backup=1
-/oops           emmc    /dev/block/bootdevice/by-name/oops                     flags=backup=1
-/dtbobak        emmc    /dev/block/bootdevice/by-name/dtbobak                  flags=backup=1
-/mdtpbak        emmc    /dev/block/bootdevice/by-name/mdtpbak                  flags=backup=1
-/dspbak         ext4    /dev/block/bootdevice/by-name/dspbak                   flags=backup=1
-/persistbak     ext4    /dev/block/bootdevice/by-name/persistbak               flags=backup=1
-/logo           emmc    /dev/block/bootdevice/by-name/logo                     flags=backup=1;flashimg=1
-/bootbak        emmc    /dev/block/bootdevice/by-name/bootbak                  flags=backup=1
-/exaid          emmc    /dev/block/bootdevice/by-name/exaid                    flags=backup=1
-/gsort          emmc    /dev/block/bootdevice/by-name/gsort                    flags=backup=1
+#TODO: Add 'check' as fs_mgr_flags with data partition.
+# Currently we dont have e2fsck compiled. So fs check would failed.
 
-# Removable storage
-/usb_otg       vfat   /dev/block/sda1   /dev/block/sda   flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
-/sdcard1       auto   /dev/block/mmcblk1p1               flags=display="MicroSD";storage;wipeingui;removable
+#<src>                                                 <mnt_point>               <type>  <mnt_flags and options>                            <fs_mgr_flags>
+/dev/block/bootdevice/by-name/system                    /                        ext4    ro,barrier=1,discard                                 wait,avb
+/dev/block/bootdevice/by-name/cache                     /cache                   ext4    nosuid,noatime,nodev,barrier=1                       wait
+/dev/block/bootdevice/by-name/metadata			/metadata		 ext4	 noatime,nosuid,nodev,discard			      wait,formattable,first_stage_mount
+/dev/block/bootdevice/by-name/userdata                  /data                    f2fs    noatime,nosuid,nodev,nodiscard,alloc_mode=reuse,fsync_mode=nobarrier    latemount,wait,check,fileencryption=ice,reservedsize=128M,quota
+/devices/platform/soc/4784000.sdhci/mmc_host*           /storage/sdcard1         vfat    nosuid,nodev                                         wait,voldmanaged=sdcard1:auto,encryptable=footer
+/devices/platform/soc/1da4000.ufshc_card/host*          /storage/sdcard1         vfat    nosuid,nodev                                         wait,voldmanaged=sdcard1:auto,encryptable=footer
+/dev/block/bootdevice/by-name/modem                     /vendor/firmware_mnt     vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait
+/dev/block/bootdevice/by-name/dsp                       /vendor/dsp              ext4    ro,nosuid,nodev,barrier=1                            wait
+/dev/block/bootdevice/by-name/persist                   /mnt/vendor/persist      ext4    noatime,nosuid,nodev,barrier=1                       wait,check
+/dev/block/bootdevice/by-name/bluetooth                 /vendor/bt_firmware      vfat    ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait
+/devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.0.auto*     /storage/usbotg    vfat    nosuid,nodev         wait,voldmanaged=usbotg:auto
+# Need to have this entry in here even though the mount point itself is no longer needed.
+# The update_engine code looks for this entry in order to determine the boot device address
+# and fails if it does not find it.
+/dev/block/bootdevice/by-name/misc                      /misc              emmc    defaults                                             defaults
