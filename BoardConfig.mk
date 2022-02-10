@@ -122,6 +122,10 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE := true
+
 # Treble
 BOARD_VNDK_VERSION := current
 
