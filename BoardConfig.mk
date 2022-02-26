@@ -181,5 +181,5 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpcrecpp.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
 
-# SubVersion
-TW_DEVICE_VERSION := A11.1
+# Show build time on the splash screen
+TW_DEVICE_VERSION=$(shell date '+%Y%m%d') Redmi Note 8/8T
