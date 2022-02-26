@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The Android Open Source Project
+# Copyright (C) 2019 The TwrpBuilder Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,22 +17,15 @@
 # Release name
 PRODUCT_RELEASE_NAME := willow
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-
-# Inherit from willow device
-$(call inherit-product, device/xiaomi/willow/device.mk)
-
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Device identifier. This must come after all inclusions
+## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := willow
 PRODUCT_NAME := twrp_willow
-PRODUCT_BRAND := Xiaomi
+PRODUCT_BRAND := xiaomi
 PRODUCT_MODEL := Xiaomi Redmi Note 8/8T
 PRODUCT_MANUFACTURER := Xiaomi
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.bootimage.build.date.utc \
-    ro.build.date.utc
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)

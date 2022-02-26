@@ -4,6 +4,7 @@
 
 load_willow()
 {
+    echo "unified-script: Loading willow props" >> /tmp/recovery.log
     resetprop "ro.product.model" "Redmi Note 8T"
     resetprop "ro.product.name" "willow"
     resetprop "ro.build.product" "willow"
@@ -13,6 +14,7 @@ load_willow()
 
 load_ginkgo()
 {
+    echo "unified-script: Loading ginkgo props" >> /tmp/recovery.log
     resetprop "ro.product.model" "Redmi Note 8"
     resetprop "ro.product.name" "ginkgo"
     resetprop "ro.build.product" "ginkgo"
@@ -21,9 +23,9 @@ load_ginkgo()
 }
 
 region=$(getprop ro.boot.hwc)
-echo $region
+echo "unified-script: Region - $region" >> /tmp/recovery.log
 hwversion=$(getprop ro.boot.hwversion)
-echo $hwversion
+echo "unified-script: Hardware version - $hwversion" >> /tmp/recovery.log
 
 case $region in
     "Global_B")

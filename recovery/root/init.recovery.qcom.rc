@@ -27,11 +27,6 @@
 
 import /init.recovery.qcom_decrypt.rc
 
-on fs
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    setprop prepdecrypt.setpatch true
-
 service unified-script /system/bin/unified-script.sh
      user root
      group root
@@ -39,6 +34,12 @@ service unified-script /system/bin/unified-script.sh
      oneshot
      seclabel u:r:recovery:s0
 
- on boot
-     chmod 0777 /system/bin/unified-script.sh
-     start unified-script
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    setprop prepdecrypt.setpatch true
+
+on boot
+    setprop sys.usb.config adb
+    chmod 0777 /system/bin/unified-script.sh
+    start unified-script

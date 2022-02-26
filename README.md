@@ -16,7 +16,7 @@ repo sync
 
 ```
 . build/envsetup.sh
-lunch omni_willow-eng
+lunch twrp_willow-eng
 mka recocoveryimage
 ```
 
