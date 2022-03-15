@@ -105,6 +105,11 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+#Init
+TARGET_INIT_VENDOR_LIB := libinit_willow
+TARGET_RECOVERY_DEVICE_MODULES := libinit_willow
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
+
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
